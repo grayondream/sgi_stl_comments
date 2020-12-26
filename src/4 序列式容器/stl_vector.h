@@ -216,7 +216,7 @@ protected:
       uninitialized_fill_n(result, n, x);
       return result;
     }
-    __STL_UNWIND(data_allocator::deallocate(result, n));
+    __STL_UNWIND(data_allocator::deallocate(result, n));      //申请拷贝失败，销毁内存
   }
 
 #ifdef __STL_MEMBER_TEMPLATES
@@ -232,7 +232,7 @@ protected:
   }
 #else /* __STL_MEMBER_TEMPLATES */
   iterator allocate_and_copy(size_type n,
-                             const_iterator first, const_iterator last) {
+                             const_iterator first, const_iterator last) {     //将[first, last)拷贝到[result, last+n)
     iterator result = data_allocator::allocate(n);
     __STL_TRY {
       uninitialized_copy(first, last, result);
@@ -277,12 +277,12 @@ protected:
 };
 
 template <class T, class Alloc>
-inline bool operator==(const vector<T, Alloc>& x, const vector<T, Alloc>& y) {
+inline bool operator==(const vector<T, Alloc>& x, const vector<T, Alloc>& y) {        //==重载
   return x.size() == y.size() && equal(x.begin(), x.end(), y.begin());
 }
 
 template <class T, class Alloc>
-inline bool operator<(const vector<T, Alloc>& x, const vector<T, Alloc>& y) {
+inline bool operator<(const vector<T, Alloc>& x, const vector<T, Alloc>& y) {         //<重载
   return lexicographical_compare(x.begin(), x.end(), y.begin(), y.end());
 }
 
@@ -296,7 +296,7 @@ inline void swap(vector<T, Alloc>& x, vector<T, Alloc>& y) {
 #endif /* __STL_FUNCTION_TMPL_PARTIAL_ORDER */
 
 template <class T, class Alloc>
-vector<T, Alloc>& vector<T, Alloc>::operator=(const vector<T, Alloc>& x) {
+vector<T, Alloc>& vector<T, Alloc>::operator=(const vector<T, Alloc>& x) {            //=重载
   if (&x != this) {
     if (x.size() > capacity()) {
       iterator tmp = allocate_and_copy(x.end() - x.begin(),
@@ -356,9 +356,9 @@ void vector<T, Alloc>::insert_aux(iterator position, const T& x) {              
 }
 
 template <class T, class Alloc>
-void vector<T, Alloc>::insert(iterator position, size_type n, const T& x) {
+void vector<T, Alloc>::insert(iterator position, size_type n, const T& x) {                     //向position处插入n个元素并初始化为x
   if (n != 0) {
-    if (size_type(end_of_storage - finish) >= n) {
+    if (size_type(end_of_storage - finish) >= n) {                  //拥有足够的可用空间插入元素
       T x_copy = x;
       const size_type elems_after = finish - position;
       iterator old_finish = finish;
@@ -376,8 +376,8 @@ void vector<T, Alloc>::insert(iterator position, size_type n, const T& x) {
         fill(position, old_finish, x_copy);
       }
     }
-    else {
-      const size_type old_size = size();        
+    else {                                                        
+      const size_type old_size = size();                            //空间不足，则需要额外申请，但是需要注意的是这里申请的内存大小是old_size+max(old_size,n)
       const size_type len = old_size + max(old_size, n);
       iterator new_start = data_allocator::allocate(len);
       iterator new_finish = new_start;
@@ -470,13 +470,13 @@ void vector<T, Alloc>::range_insert(iterator position,
 #else /* __STL_MEMBER_TEMPLATES */
 
 template <class T, class Alloc>
-void vector<T, Alloc>::insert(iterator position, 
+void vector<T, Alloc>::insert(iterator position,                              //将[first, last)插入到position后面
                               const_iterator first, 
                               const_iterator last) {
   if (first != last) {
     size_type n = 0;
     distance(first, last, n);
-    if (size_type(end_of_storage - finish) >= n) {
+    if (size_type(end_of_storage - finish) >= n) {                  //有足够的空间进行插入
       const size_type elems_after = finish - position;
       iterator old_finish = finish;
       if (elems_after > n) {
