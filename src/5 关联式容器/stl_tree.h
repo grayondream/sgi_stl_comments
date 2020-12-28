@@ -207,7 +207,7 @@ inline Value* value_type(const __rb_tree_iterator<Value, Ref, Ptr>&) {
 #endif /* __STL_CLASS_PARTIAL_SPECIALIZATION */
 
 inline void 
-__rb_tree_rotate_left(__rb_tree_node_base* x, __rb_tree_node_base*& root)
+__rb_tree_rotate_left(__rb_tree_node_base* x, __rb_tree_node_base*& root)                                   //左旋转
 {
   __rb_tree_node_base* y = x->right;
   x->right = y->left;
@@ -226,7 +226,7 @@ __rb_tree_rotate_left(__rb_tree_node_base* x, __rb_tree_node_base*& root)
 }
 
 inline void 
-__rb_tree_rotate_right(__rb_tree_node_base* x, __rb_tree_node_base*& root)
+__rb_tree_rotate_right(__rb_tree_node_base* x, __rb_tree_node_base*& root)                                  //右旋转
 {
   __rb_tree_node_base* y = x->left;
   x->left = y->right;
@@ -244,21 +244,28 @@ __rb_tree_rotate_right(__rb_tree_node_base* x, __rb_tree_node_base*& root)
   x->parent = y;
 }
 
+/*
+1. 插入节点位置的父节点和父节点的兄弟节点均为红色，则需要进行颜色的反转；
+2. 插入位置为左子树内插，则需要先左旋转后右旋转；
+3. 插入位置为左子树的外插，则需要右旋转；
+4. 插入位置为右子树的内插，则需要先右旋转后左旋转；
+5. 插入位置为右子树的外插，则需要左旋转。
+*/
 inline void 
-__rb_tree_rebalance(__rb_tree_node_base* x, __rb_tree_node_base*& root)
+__rb_tree_rebalance(__rb_tree_node_base* x, __rb_tree_node_base*& root)                                                             //插入完节点之后进行rbtree的重平衡操作，保证符合rbtree的条件x为插入的节点
 {
-  x->color = __rb_tree_red;
-  while (x != root && x->parent->color == __rb_tree_red) {
-    if (x->parent == x->parent->parent->left) {
+  x->color = __rb_tree_red;                         //插入节点首先设置为红色
+  while (x != root && x->parent->color == __rb_tree_red) {                              //如果一直存在双红的情况则一直进行调整
+    if (x->parent == x->parent->parent->left) {                              //如果当前节点的父结点为祖先节点的左子节点
       __rb_tree_node_base* y = x->parent->parent->right;
-      if (y && y->color == __rb_tree_red) {
+      if (y && y->color == __rb_tree_red) {                   //如果父节点及父节点的兄弟节点同为红色，则反转颜色
         x->parent->color = __rb_tree_black;
         y->color = __rb_tree_black;
         x->parent->parent->color = __rb_tree_red;
-        x = x->parent->parent;
+        x = x->parent->parent;                  //不断向上回溯，直到节点符合红黑树的条件
       }
       else {
-        if (x == x->parent->right) {
+        if (x == x->parent->right) {                          //当前节点为父节点的右子节点，即左子树内插，则需要先左旋转后右旋转
           x = x->parent;
           __rb_tree_rotate_left(x, root);
         }
@@ -267,16 +274,16 @@ __rb_tree_rebalance(__rb_tree_node_base* x, __rb_tree_node_base*& root)
         __rb_tree_rotate_right(x->parent->parent, root);
       }
     }
-    else {
+    else {                                                                  //如果当前节点的父结点为祖先节点的右子节点
       __rb_tree_node_base* y = x->parent->parent->left;
-      if (y && y->color == __rb_tree_red) {
+      if (y && y->color == __rb_tree_red) {                   //如果父节点及父节点的兄弟节点同为红色，则反转颜色
         x->parent->color = __rb_tree_black;
         y->color = __rb_tree_black;
         x->parent->parent->color = __rb_tree_red;
         x = x->parent->parent;
       }
       else {
-        if (x == x->parent->left) {
+        if (x == x->parent->left) {                         //当前节点为父节点的右子节点，即右子树内插，则需要先右旋转后左旋转
           x = x->parent;
           __rb_tree_rotate_right(x, root);
         }
@@ -599,7 +606,7 @@ public:
   size_type erase(const key_type& x);
   void erase(iterator first, iterator last);
   void erase(const key_type* first, const key_type* last);
-  void clear() {
+  void clear() {                                                                                                    //清空红黑树节点
     if (node_count != 0) {
       __erase(root());
       leftmost() = header;
@@ -652,7 +659,7 @@ inline void swap(rb_tree<Key, Value, KeyOfValue, Compare, Alloc>& x,
 template <class Key, class Value, class KeyOfValue, class Compare, class Alloc>
 rb_tree<Key, Value, KeyOfValue, Compare, Alloc>& 
 rb_tree<Key, Value, KeyOfValue, Compare, Alloc>::
-operator=(const rb_tree<Key, Value, KeyOfValue, Compare, Alloc>& x) {
+operator=(const rb_tree<Key, Value, KeyOfValue, Compare, Alloc>& x) {                                                                   //赋值拷贝构造
   if (this != &x) {
                                 // Note that Key may be a constant type.
     clear();
@@ -707,7 +714,7 @@ __insert(base_ptr x_, base_ptr y_, const Value& v) {
 
 template <class Key, class Value, class KeyOfValue, class Compare, class Alloc>
 typename rb_tree<Key, Value, KeyOfValue, Compare, Alloc>::iterator
-rb_tree<Key, Value, KeyOfValue, Compare, Alloc>::insert_equal(const Value& v)
+rb_tree<Key, Value, KeyOfValue, Compare, Alloc>::insert_equal(const Value& v)                                           //插入允许重复的节点
 {
   link_type y = header;
   link_type x = root();
@@ -720,7 +727,7 @@ rb_tree<Key, Value, KeyOfValue, Compare, Alloc>::insert_equal(const Value& v)
 
 
 template <class Key, class Value, class KeyOfValue, class Compare, class Alloc>
-pair<typename rb_tree<Key, Value, KeyOfValue, Compare, Alloc>::iterator, bool>
+pair<typename rb_tree<Key, Value, KeyOfValue, Compare, Alloc>::iterator, bool>                                          //插入不允许重复的节点
 rb_tree<Key, Value, KeyOfValue, Compare, Alloc>::insert_unique(const Value& v)
 {
   link_type y = header;
@@ -853,7 +860,7 @@ rb_tree<K, V, KoV, Cmp, A>::insert_unique(const_iterator first,
          
 template <class Key, class Value, class KeyOfValue, class Compare, class Alloc>
 inline void
-rb_tree<Key, Value, KeyOfValue, Compare, Alloc>::erase(iterator position) {
+rb_tree<Key, Value, KeyOfValue, Compare, Alloc>::erase(iterator position) {                                         //在进行删除时先将节点向下调整
   link_type y = (link_type) __rb_tree_rebalance_for_erase(position.node,
                                                           header->parent,
                                                           header->left,
@@ -874,7 +881,7 @@ rb_tree<Key, Value, KeyOfValue, Compare, Alloc>::erase(const Key& x) {
 
 template <class K, class V, class KeyOfValue, class Compare, class Alloc>
 typename rb_tree<K, V, KeyOfValue, Compare, Alloc>::link_type 
-rb_tree<K, V, KeyOfValue, Compare, Alloc>::__copy(link_type x, link_type p) {
+rb_tree<K, V, KeyOfValue, Compare, Alloc>::__copy(link_type x, link_type p) {                                                     //拷贝子树
                                 // structural copy.  x and p must be non-null.
   link_type top = clone_node(x);
   top->parent = p;
