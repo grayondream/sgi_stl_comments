@@ -1,0 +1,33 @@
+<svg host="65bd71144e" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="601px" height="341px" viewBox="-0.5 -0.5 601 341" content="&lt;mxfile host=&quot;d724a9be-edbf-4d48-8d14-f80bbcf00114&quot; modified=&quot;2020-12-28T08:36:23.824Z&quot; agent=&quot;5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.52.1 Chrome/83.0.4103.122 Electron/9.3.5 Safari/537.36&quot; version=&quot;13.10.0&quot; etag=&quot;urcr_iieKg2bdAQHmiZk&quot; type=&quot;embed&quot;&gt;&lt;diagram id=&quot;0WLlr9rWCLZxl96qAu0X&quot; name=&quot;Page-1&quot;&gt;5ZlNm5owEMc/jXdJAPG61nYP25OHnrMwAm1gfGJctZ++URJelO3yPItB1pPknwlJfs5MBpjQRXb4Idgm+YkR8AmZRocJ/TYhxHEoUT8n5VgowXRaCLFII21UCav0L2jRmO3SCLYNQ4nIZbppiiHmOYSyoTEhcN80WyNvzrphMVwJq5Dxa/VXGslE74LMKv0Z0jgxMzv+vOjJmDHWO9kmLMJ9TaLLCV0IRFlcZYcF8BM8w6UY9/2d3nJhAnLZaQAtRrwxvtOb0wuTR7NbiNTmdROFTDDGnPFlpT4J3OURnG45Va3K5gVxo0RHib9ByqP+J9lOopISmXHdu045XyBHcZ6RroMQwlDpWynwD9R6XgPP9aZlj6GvuD0V6z4t9l0WWtriToTaSm9XMhGDsSLlH6E8GDADKY7KRgBnMn1r3p5pV4pLu4q2utDA2+GTj9nvk1TCasPOy92raPosNz0lCAmH/3O6BqAHzLXv6uB1At3eV6HgaympRYHRPkOsg7feIzHHGw6ZO05kZa4fAJnjPXhS9FqSomspKXZgf5f+OhvOX/1xIqN0OGSzkSIb8Ox15g+eFYOWrBhYyorBOP3VHbDw6eCu94jMG7DwMat92BA37OsxXnsuv22Mm8lH57EDlj5OB4+9R2b+gLWP06H4+dpRTlpOct9WlJO+PTbyIIjcNnIBeaW+f5O3PpRYdNje32HYQXb5TGiVWe8PhYO4metbRNZ7kW0H2WWRbdPNuryR/dJnCWmrGImls4T0XjHa8djLitGqx470/L1kdsPMqJrVF8hzX+07Ll3+Aw==&lt;/diagram&gt;&lt;/mxfile&gt;">
+    <defs/>
+    <g>
+        <path d="M 30 60 L 30 131.76" fill="none" stroke="#b85450" stroke-width="2" stroke-miterlimit="10" pointer-events="stroke"/>
+        <path d="M 30 137.76 L 26 129.76 L 30 131.76 L 34 129.76 Z" fill="#b85450" stroke="#b85450" stroke-width="2" stroke-miterlimit="10" pointer-events="all"/>
+        <rect x="0" y="0" width="60" height="60" fill="#f8cecc" stroke="#b85450" pointer-events="all"/>
+        <rect x="60" y="0" width="60" height="60" fill="#f8cecc" stroke="#b85450" pointer-events="all"/>
+        <rect x="120" y="0" width="60" height="60" fill="#f8cecc" stroke="#b85450" pointer-events="all"/>
+        <path d="M 210 60 L 210 131.76" fill="none" stroke="#b85450" stroke-width="2" stroke-miterlimit="10" pointer-events="stroke"/>
+        <path d="M 210 137.76 L 206 129.76 L 210 131.76 L 214 129.76 Z" fill="#b85450" stroke="#b85450" stroke-width="2" stroke-miterlimit="10" pointer-events="all"/>
+        <rect x="180" y="0" width="60" height="60" fill="#f8cecc" stroke="#b85450" pointer-events="all"/>
+        <rect x="240" y="0" width="60" height="60" fill="#f8cecc" stroke="#b85450" pointer-events="all"/>
+        <rect x="300" y="0" width="60" height="60" fill="#f8cecc" stroke="#b85450" pointer-events="all"/>
+        <path d="M 390 60 L 390 131.76" fill="none" stroke="#b85450" stroke-width="2" stroke-miterlimit="10" pointer-events="stroke"/>
+        <path d="M 390 137.76 L 386 129.76 L 390 131.76 L 394 129.76 Z" fill="#b85450" stroke="#b85450" stroke-width="2" stroke-miterlimit="10" pointer-events="all"/>
+        <rect x="360" y="0" width="60" height="60" fill="#f8cecc" stroke="#b85450" pointer-events="all"/>
+        <rect x="420" y="0" width="60" height="60" fill="#f8cecc" stroke="#b85450" pointer-events="all"/>
+        <path d="M 510 60 L 510 131.76" fill="none" stroke="#b85450" stroke-width="2" stroke-miterlimit="10" pointer-events="stroke"/>
+        <path d="M 510 137.76 L 506 129.76 L 510 131.76 L 514 129.76 Z" fill="#b85450" stroke="#b85450" stroke-width="2" stroke-miterlimit="10" pointer-events="all"/>
+        <rect x="480" y="0" width="60" height="60" fill="#f8cecc" stroke="#b85450" pointer-events="all"/>
+        <rect x="540" y="0" width="60" height="60" fill="#f8cecc" stroke="#b85450" pointer-events="all"/>
+        <path d="M 30 200 L 30 271.76" fill="none" stroke="#b85450" stroke-width="2" stroke-miterlimit="10" pointer-events="stroke"/>
+        <path d="M 30 277.76 L 26 269.76 L 30 271.76 L 34 269.76 Z" fill="#b85450" stroke="#b85450" stroke-width="2" stroke-miterlimit="10" pointer-events="all"/>
+        <rect x="0" y="140" width="60" height="60" fill="#d5e8d4" stroke="#82b366" pointer-events="all"/>
+        <rect x="180" y="140" width="60" height="60" fill="#d5e8d4" stroke="#82b366" pointer-events="all"/>
+        <rect x="0" y="280" width="60" height="60" fill="#d5e8d4" stroke="#82b366" pointer-events="all"/>
+        <rect x="360" y="140" width="60" height="60" fill="#d5e8d4" stroke="#82b366" pointer-events="all"/>
+        <path d="M 510 200 L 510 271.76" fill="none" stroke="#b85450" stroke-width="2" stroke-miterlimit="10" pointer-events="stroke"/>
+        <path d="M 510 277.76 L 506 269.76 L 510 271.76 L 514 269.76 Z" fill="#b85450" stroke="#b85450" stroke-width="2" stroke-miterlimit="10" pointer-events="all"/>
+        <rect x="480" y="140" width="60" height="60" fill="#d5e8d4" stroke="#82b366" pointer-events="all"/>
+        <rect x="480" y="280" width="60" height="60" fill="#d5e8d4" stroke="#82b366" pointer-events="all"/>
+    </g>
+</svg>
